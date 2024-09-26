@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Editor</title>
+  <style>
+    .editor-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #editor {
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 400px;
+      outline: none;
+    }
+    .toolbar button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    #editor {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="editor-container">
+    <div class="toolbar">
+      <button onclick="execCmd('bold')"><b>B</b></button>
+      <button onclick="execCmd('italic')"><i>I</i></button>
+      <button onclick="execCmd('underline')"><u>U</u></button>
+      <button onclick="execCmd('justifyLeft')">Left</button>
+      <button onclick="execCmd('justifyCenter')">Center</button>
+      <button onclick="execCmd('justifyRight')">Right</button>
+      <button onclick="execCmd('insertUnorderedList')">• List</button>
+      <button onclick="execCmd('insertOrderedList')">1. List</button>
+      <button onclick="execCmd('createLink', prompt('Enter a URL:'))">Link</button>
+      <button onclick="execCmd('unlink')">Remove Link</button>
+    </div>
+    
+    <!-- Editable content area -->
+    <div id="editor" contenteditable="true">
+      Start typing here...
+    </div>
+  </div>
+
+  <script>
+    function execCmd(command, value = null) {
+      document.execCommand(command, false, value);
+    }
+  </script>
+
+</body>
+</html>
